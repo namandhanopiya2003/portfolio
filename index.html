@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naman Dhanopiya – Machine Learning Developer</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+
+  .menu-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 36px;
+    height: 32px;
+    display: none; 
+  }
+  .menu-toggle .bar {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s ease;
+    border-radius: 3px;
+  }
+
+
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+
+  body.light-mode .menu-toggle .bar {
+    background-color: black;
+  }
+
+
+  @media (max-width: 768px) {
+
+    .menu-toggle {
+      display: block;
+    }
+
+
+    .topbar {
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      background: rgba(0, 0, 0, 0.85);
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 9999;
+    }
+
+
+    .topbar.show {
+      display: flex;
+    }
+
+
+    body.light-mode .topbar {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+
+    .topbar a {
+      margin: 8px 0;
+      font-size: 1rem;
+    }
+  }
+
+
+.menu-toggle .bar {
+  box-shadow: none !important;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.menu-toggle .bar {
+  background-color: white !important;
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-filter: none !important;
+}
+body.light-mode .menu-toggle .bar {
+  background-color: black !important;
+}
+
+
+.menu-toggle,
+.menu-toggle:focus,
+.menu-toggle:hover,
+.menu-toggle.active {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border: none !important;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .about-flex {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .about-text {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .about-text p {
+    margin: 0 !important;
+    padding: 0 12px !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: left;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
+
+</style>
+</head>
+
+<body class="home-bg">
+<button class="menu-toggle" id="menuToggleBtn" onclick="toggleMenu()">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+
+
+  <div class="topbar" id="mobileMenu">
+    <a href="skills.html">Skills & Technologies</a>
+    <a href="projects.html">Projects</a>
+    <a href="training.html">Training</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="resume/resume.pdf" target="_blank">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+
+  <header>
+    <h1>Naman Dhanopiya</h1>
+    <p>ML Developer | Data Science | Android | Blockchain</p>
+  </header>
+
+
+  <section class="about dark-neutral" id="about">
+    <h2>About Me</h2>
+    <div class="about-flex">
+      <div class="about-text" id="typewriter">
+
+      </div>
+    </div>
+  </section>
+
+
+  <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+
+
+  <script>
+    window.onload = function () {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('.theme-toggle').textContent = '🌙';
+      }
+    };
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      document.querySelector('.theme-toggle').textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+  </script>
+
+
+  <script>
+    const paragraphs = [
+      "• I’m a final-year B.Tech Computer Science student, specializing in Data Science. My work focuses on building intelligent systems that transform data into practical, real-world applications — from real-time transcription and sentiment analysis to recommendation engines and beyond.",
+      "• I bring hands-on expertise in Python, C++, Java, Kotlin, and R, with experience in Android development and Blockchain technologies, including smart contracts. I’m driven by a passion for solving real-world challenges and crafting scalable, efficient solutions.",
+      "• Whether it’s automating workflows, enhancing user experiences, or optimizing data pipelines, I aim to write code that delivers measurable impact."
+    ];
+
+    const typeTarget = document.getElementById("typewriter");
+    let paraIndex = 0;
+    let charIndex = 0;
+
+    function typeParagraph() {
+      if (paraIndex < paragraphs.length) {
+        const p = document.createElement("p");
+        typeTarget.appendChild(p);
+
+        function typeChar() {
+          if (charIndex < paragraphs[paraIndex].length) {
+            p.innerHTML += paragraphs[paraIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 10);
+          } else {
+            charIndex = 0;
+            paraIndex++;
+            setTimeout(typeParagraph, 400); 
+          }
+        }
+
+        typeChar();
+      }
+    }
+
+    window.addEventListener("load", typeParagraph);
+  </script>
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const toggleBtn = document.getElementById('menuToggleBtn');
+    const isMenuOpen = menu.classList.toggle('show');
+
+    toggleBtn.classList.toggle('active');
+
+    if (window.innerWidth <= 768) {
+      const links = menu.querySelectorAll('a');
+      links.forEach(link => {
+        link.onclick = () => {
+          menu.classList.remove('show');
+          toggleBtn.classList.remove('active');
+        };
+      });
+
+      document.addEventListener('click', function outsideClick(e) {
+        if (!menu.contains(e.target) && !e.target.closest('.menu-toggle')) {
+          menu.classList.remove('show');
+          toggleBtn.classList.remove('active');
+          document.removeEventListener('click', outsideClick);
+        }
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
