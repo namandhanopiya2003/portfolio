@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills – Naman Dhanopiya</title>
+  <link rel="stylesheet" href="css/style.css"/>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f111a;
+    color: #fff;
+    scroll-behavior: smooth;
+  }
+
+  .topbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px 0 40px;
+    gap: 20px;
+  }
+
+  .topbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .topbar a:hover {
+    color: var(--accent);
+  }
+
+  header {
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 20px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--accent);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color : var(--accent);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+  }
+
+  .timeline-entry {
+    padding: 20px 40px;
+    position: relative;
+    width: 50%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease-out;
+  }
+
+  .timeline-entry.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .timeline-entry:nth-child(odd) {
+    left: 0;
+  }
+
+  .timeline-entry:nth-child(even) {
+    left: 50%;
+  }
+
+  .timeline-entry::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    top: 30px;
+    z-index: 1;
+  }
+
+  .timeline-entry:nth-child(odd)::before {
+    right: -10px;
+  }
+
+  .timeline-entry:nth-child(even)::before {
+    left: -10px;
+  }
+
+  .timeline-entry h3 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+
+  .timeline-skill {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 204, 255, 0.2);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    max-height: 250px;
+    overflow: hidden;
+    transition: max-height 0.8s ease;
+  }
+
+  .timeline-skill.expanded {
+  max-height: 1000px;
+}
+
+  .timeline-skill img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .timeline-skill strong {
+    font-size: 1.05rem;
+    color: var(--accent);
+  }
+
+  .timeline-skill p {
+  font-size: 0.95rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.timeline-skill.expanded p {
+  max-height: 150px; 
+  opacity: 1;
+  margin: 6px 0;
+  padding: 4px 0;
+}
+
+
+  .timeline-skill p {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.6s ease-in-out;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-skill.expanded p {
+  max-height: none; 
+  opacity: 1;
+  margin: 6px 0;
+  padding: 4px 0;
+}
+
+
+
+  @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .topbar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .topbar.show {
+    display: flex;
+  }
+
+  body.light-mode .topbar {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .topbar a {
+    margin: 8px 0;
+    font-size: 1rem;
+  }
+
+  .timeline::after {
+    left: 20px;
+  }
+
+  .timeline-entry {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 20px;
+    left: 0 !important;
+  }
+
+  .timeline-entry::before {
+    left: -10px;
+  }
+}
+
+
+
+  body.light-mode {
+    background-color: #f5f5f5;
+    color: #111;
+  }
+
+  body.light-mode .topbar a {
+    color: #111;
+  }
+
+  body.light-mode .topbar a:hover {
+    color: #333;
+  }
+
+  body.light-mode header h1,
+  body.light-mode .timeline-entry h3,
+  body.light-mode .timeline-skill strong {
+    color: #111;
+  }
+
+  body.light-mode .timeline::after {
+    background-color: #aaa;
+  }
+
+  body.light-mode .timeline-skill {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 36px;
+  height: 32px;
+  display: none;
+  box-shadow: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s ease;
+  border-radius: 3px;
+  box-shadow: none !important;
+}
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+body.light-mode .menu-toggle .bar {
+  background-color: black;
+  box-shadow: none !important;
+}
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.light-mode .timeline-entry::before {
+  background-color: #aaa; 
+}
+
+.timeline-intro {
+  max-width: 1000px;
+  margin: 40px auto 10px;
+  padding: 0 20px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  text-align: left;
+  color: #ccc;
+}
+
+body.light-mode .timeline-intro {
+  color: #222;
+}
+
+.timeline-skill p {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  overflow: hidden;
+  transition: 
+    max-height 0.8s ease,
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-skill.expanded p {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  margin: 6px 0;
+  padding: 4px 0;
+}
+
+</style>
+
+</head>
+<body class="skills-bg">
+
+  <button class="menu-toggle" id="menuToggleBtn" onclick="toggleMenu()">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+  </button>
+
+
+  <div class="topbar" id="mobileMenu">
+    <a href="index.html#about">About Me</a>
+    <a href="projects.html">Projects</a>
+    <a href="training.html">Training</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="resume/resume.pdf" target="_blank">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+
+  <header>
+    <h1>SKILLS TIMELINE</h1>
+  </header>
+
+
+<div class="timeline-intro">
+  <p>Over the years, I’ve developed a diverse skill set that powers my work in Machine Learning, Data Science, and intelligent systems—each skill here has been carefully chosen, applied, and refined through real-world projects.</p>
+</div>
+
+
+  <section class="skills timeline dark-neutral" id="skills"></section>
+
+
+  <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+
+  <script>
+
+  window.onload = function () {
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-mode');
+      document.querySelector('.theme-toggle').textContent = '🌙';
+    }
+  };
+
+  function toggleTheme() {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    document.querySelector('.theme-toggle').textContent = isLight ? '🌙' : '☀️';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }
+
+
+  const timelineData = [
+    {
+      year: "2022",
+      skills: [
+        { title: "Python", img: "skills-image1.jpg", why: "Primary language for ML, AI, and data-driven applications.", where: "Core technology in major ML and NLP projects.", impact: "Accelerated prototyping and end-to-end deployment." },
+        { title: "C", img: "skills-image2.jpg", why: "Built strong programming fundamentals and logic.", where: "Used in academic coursework and logic-intensive tasks.", impact: "Established a solid foundation in low-level programming." },
+        { title: "HTML", img: "skills-image3.jpg", why: "Defined structure of web content.", where: "Implemented across portfolio and web-based UIs.", impact: "Enabled clean, accessible, and well-organized layouts." },
+        { title: "CSS", img: "skills-image4.jpg", why: "Crafted visual styling and responsive designs.", where: "Applied in frontend interfaces and personal site.", impact: "Delivered modern, interactive user experiences." }
+      ]
+    },
+    {
+      year: "2023",
+      skills: [
+        { title: "C++", img: "skills-image5.jpg", why: "To master object-oriented programming and system-level design.", where: "Applied in course projects and low-level programming tasks.", impact: "Strengthened problem-solving and performance optimization." },
+        { title: "Java", img: "skills-image1.jpg", why: "For building scalable, cross-platform applications using OOP.", where: "Used in Android development and academic assignments.", impact: "Enabled robust logic implementation and backend support." },
+        { title: "SQL", img: "skills-image2.jpg", why: "To manage, query, and analyze structured data effectively.", where: "Utilized in backend systems and data analysis workflows.", impact: "Streamlined data retrieval and improved reporting accuracy." },
+        { title: "DBMS", img: "skills-image3.jpg", why: "To design and implement relational database architectures.", where: "Covered in curriculum and backend development projects.", impact: "Built scalable, normalized, and consistent data models." },
+        { title: "DSA", img: "skills-image4.jpg", why: "To efficiently tackle algorithmic and logic-based problems.", where: "Practiced in competitive coding, interviews, and coursework.", impact: "Sharpened optimization skills and logical thinking." }
+      ]
+    },
+    {
+      year: "2024",
+      skills: [
+        { title: "Kotlin", img: "skills-image5.jpg", why: "To build modern, efficient Android applications.", where: "Implemented in gesture-controlled and chatbot apps.", impact: "Enhanced performance and improved code readability." },
+        { title: "R", img: "skills-image1.jpg", why: "For statistical computing and ML modeling.", where: "Applied in the movie recommendation project.", impact: "Enabled accurate predictions through deep analysis." },
+        { title: "R Studio", img: "skills-image2.jpg", why: "To develop in R with advanced data tools.", where: "Used for data exploration and visualization tasks.", impact: "Accelerated analysis and streamlined workflows." },
+        { title: "Tableau", img: "skills-image3.jpg", why: "To create intuitive data visualizations.", where: "Applied in internship dashboards and reports.", impact: "Delivered clear, interactive data insights." },
+        { title: "Excel", img: "skills-image4.jpg", why: "For fast analysis and spreadsheet-based reporting.", where: "Used during internships and project planning.", impact: "Enabled quick calculations and visual summaries." },
+        { title: "Data Analysis", img: "skills-image5.jpg", why: "To derive insights from raw and structured data.", where: "Applied in ML/NLP projects and internships.", impact: "Improved decision-making and model accuracy." },
+        { title: "Data Mining", img: "skills-image1.jpg", why: "To extract meaningful patterns from large datasets.", where: "Used in predictive and sentiment-based models.", impact: "Uncovered trends that enhanced forecasting." },
+        { title: "Data Visualization", img: "skills-image2.jpg", why: "To communicate complex data clearly.", where: "Used in reports, dashboards, and apps.", impact: "Made insights more accessible and actionable." },
+        { title: "Data Transformation", img: "skills-image3.jpg", why: "To preprocess and restructure raw datasets.", where: "Applied across most ML and analytics pipelines.", impact: "Enabled scalable, clean, and efficient workflows." },
+        { title: "Predictive Analysis", img: "skills-image4.jpg", why: "To anticipate trends and outcomes through data.", where: "Used in product rating and recommendation systems.", impact: "Drove intelligent, data-backed decision-making." },
+        { title: "Android Studio", img: "skills-image5.jpg", why: "To develop and test Android applications.", where: "Used in gesture and chatbot-based apps.", impact: "Streamlined app development and debugging." },
+        { title: "scikit-learn", img: "skills-image1.jpg", why: "For building classical ML models quickly.", where: "Applied in spam detection and sentiment analysis.", impact: "Enabled fast training, testing, and tuning." },
+        { title: "Pandas", img: "skills-image2.jpg", why: "To manipulate structured data efficiently.", where: "Used in nearly every ML and preprocessing pipeline.", impact: "Simplified data cleaning and transformation." }
+      ]
+    },
+    {
+      year: "2025",
+      skills: [
+        { title: "Whisper & Wav2Vec2", img: "skills-image3.jpg", why: "To build robust, multilingual speech-to-text systems.", where: "Implemented in custom speech-to-text ML projects.", impact: "Achieved high accuracy and language flexibility." },
+        { title: "MediaPipe", img: "skills-image4.jpg", why: "To develop real-time, gesture-controlled applications.", where: "Used in AirDesk and TouchlessDocs interfaces.", impact: "Enabled hands-free control for improved accessibility." },
+        { title: "Git", img: "skills-image5.jpg", why: "To manage version control and streamline collaboration.", where: "Adopted in all major development workflows.", impact: "Enhanced code tracking, collaboration, and deployment." },
+        { title: "TensorFlow", img: "skills-image1.jpg", why: "To build and deploy deep learning models.", where: "Used in VibeCast and speech-based AI projects.", impact: "Powered scalable neural network applications." },
+        { title: "NLTK", img: "skills-image2.jpg", why: "For core NLP tasks such as tokenization and classification.", where: "Used in query chatbots and text analysis systems.", impact: "Enabled structured language understanding and processing." },
+        { title: "OpenCV", img: "skills-image3.jpg", why: "To process and analyze visual data in real time.", where: "Applied in face detection and gesture-based apps.", impact: "Facilitated responsive, vision-driven interactions." },
+        { title: "NumPy", img: "skills-image4.jpg", why: "To perform high-performance numerical computations.", where: "Core library in ML, data science, and AI pipelines.", impact: "Optimized matrix operations and computation speed." }
+      ]
+    }
+  ];
+
+  const skillsSection = document.getElementById('skills');
+
+  timelineData.forEach((entry) => {
+    const yearBlock = document.createElement('div');
+    yearBlock.className = 'timeline-entry';
+
+    let innerHTML = `<h3>${entry.year}</h3>`;
+    entry.skills.forEach(skill => {
+      innerHTML += `
+        <div class="timeline-skill collapsed">
+          <img src="images/${skill.img}" alt="${skill.title}" />
+          <strong>${skill.title}</strong>
+          <p><strong>Why I learned it:</strong> ${skill.why}</p>
+          <p><strong>Where I used it:</strong> ${skill.where}</p>
+          <p><strong>Real-world impact:</strong> ${skill.impact}</p>
+        </div>
+      `;
+    });
+
+    yearBlock.innerHTML = innerHTML;
+    skillsSection.appendChild(yearBlock);
+  });
+
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.timeline-skill')) {
+      const card = e.target.closest('.timeline-skill');
+      card.classList.toggle('expanded');
+      card.classList.toggle('collapsed');
+    }
+  });
+
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.timeline-entry').forEach(el => observer.observe(el));
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('.topbar');
+    const toggleBtn = document.getElementById('menuToggleBtn');
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('show');
+      toggleBtn.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      const isClickInside = menu.contains(e.target) || toggleBtn.contains(e.target);
+      if (!isClickInside && menu.classList.contains('show')) {
+        menu.classList.remove('show');
+        toggleBtn.classList.remove('active');
+      }
+    });
+
+    document.querySelectorAll('.topbar a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('show');
+        toggleBtn.classList.remove('active');
+      });
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
