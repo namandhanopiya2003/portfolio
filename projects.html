@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects – Naman Dhanopiya</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 40px 0 40px;
+      gap: 20px;
+    }
+
+    .topbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .topbar a:hover {
+      color: #00ffff;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 50px;
+      padding: 0 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    section {
+      padding: 40px 60px;
+    }
+
+    .project-block {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+
+    .view-technical-details-btn {
+      display: inline-block;
+      margin-top: 10px;
+      color: #00ffd5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #66d9ff; 
+  color: black;
+  padding: 12px 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 9999;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  background: #99e6ff;
+  transform: scale(1.1);
+}
+
+body.light-mode .theme-toggle {
+  background: #0033cc;  
+  color: white;
+}
+
+body.light-mode .theme-toggle:hover {
+  background: #0052e0;
+}
+
+
+    .ml-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .ml-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ml-card:hover {
+      transform: scale(1.02);
+      box-shadow: none;
+    }
+
+    .ml-card img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ml-card .text {
+      padding: 20px;
+    }
+
+
+    section h2,
+    .project-block h3,
+    .ml-card h3 {
+      color: #00ffff !important;
+    }
+
+    .project-block p,
+    .ml-card .text p {
+      color: #ccc !important;
+    }
+
+    body.light-mode section h2,
+    body.light-mode .project-block h3,
+    body.light-mode .ml-card h3 {
+      color: #000 !important;
+    }
+
+    body.light-mode .project-block p,
+    body.light-mode .ml-card .text p {
+      color: #000 !important;
+    }
+    
+    body.light-mode .project-block,
+body.light-mode .ml-card {
+  border: 1px solid rgba(0, 0, 0, 0.1); 
+  background: rgba(255, 255, 255, 0.9); 
+}
+
+body.light-mode .ml-card img {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+body:not(.light-mode) .project-block,
+body:not(.light-mode) .ml-card {
+  background: rgba(0, 0, 0, 0.9); 
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+}
+
+body:not(.light-mode) .ml-card img {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+}
+
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 36px;
+  height: 32px;
+  display: none;
+}
+.menu-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s ease;
+  border-radius: 3px;
+  box-shadow: none !important;
+}
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+body.light-mode .menu-toggle .bar {
+  background-color: black;
+}
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .topbar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+  }
+  .topbar.show {
+    display: flex;
+  }
+  body.light-mode .topbar {
+    background: rgba(255, 255, 255, 0.95);
+  }
+  .topbar a {
+    margin: 8px 0;
+    font-size: 1rem;
+  }
+
+  .ml-projects-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding: 10px;
+  }
+
+  .ml-card {
+    flex: 0 0 90%;
+    max-width: 90vw;
+    scroll-snap-align: center;
+    margin: 0 auto;
+    border-radius: 16px;
+  }
+
+  .ml-projects-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  .ml-projects-grid::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 255, 255, 0.3);
+    border-radius: 6px;
+  }
+  .ml-projects-grid::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 20px 15px;
+  }
+
+  .ml-card h3 {
+    font-size: 1rem;
+  }
+
+  .ml-card .text p {
+    font-size: 0.85rem;
+  }
+
+  .theme-toggle {
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+}
+
+.menu-toggle {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle.active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+.touchlessdocs-image,
+.hrbot-image {
+  flex: 0 0 350px;
+  max-width: 350px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .touchlessdocs-image,
+  .hrbot-image {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .touchlessdocs-image img,
+  .hrbot-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.projects-intro-line {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #ccc;
+  max-width: 800px;
+  margin: 20px auto 40px;
+  padding: 0 20px;
+}
+
+body.light-mode .projects-intro-line {
+  color: #000;
+}
+
+</style>
+</head>
+<body class="projects-bg">
+ 
+  <button class="menu-toggle" id="menuToggleBtn" onclick="toggleMenu()">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+  </button>
+
+
+  <div class="topbar" id="mobileMenu">
+    <a href="index.html#about">About Me</a>
+    <a href="skills.html">Skills & Technologies</a>
+    <a href="training.html">Training</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="resume/resume.pdf" target="_blank">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+
+  <header>
+    <h1>PROJECTS</h1>
+  </header>
+
+  <div class="projects-intro-line">
+  “Transforming ideas into deployable AI solutions — with projects spanning gesture recognition, natural language understanding, and personalized intelligence.”
+  </div>
+
+
+  <section style="box-shadow: none;">
+    <h2>Gesture-Based Projects</h2>
+    <a href="projects/touchlessdocs.html" style="text-decoration: none;">
+      <div class="project-block" style="display: flex; flex-wrap: wrap; gap: 0; cursor: pointer; padding: 0; overflow: hidden;">
+        <div class="touchlessdocs-image">
+          <img src="images/project-touchlessdocs.png" alt="TouchlessDocs Preview"
+               style="width: 100%; height: auto; object-fit: contain; display: block;" />
+        </div>
+        <div style="flex: 1; padding: 20px;">
+          <h3 style="margin-top: 0;">TouchlessDocs</h3>
+          <p>
+            A touchless PDF viewer designed for field and lab use. It supports gesture control, voice commands, and real-time display, making it easy and hygienic to view documents without physical contact in sensitive environments.
+          </p>
+          <p><strong>Tech Stack:</strong> Python, OpenCV, Mediapipe, PyMuPDF, SpeechRecognition</p>
+        </div>
+      </div>
+    </a>
+  </section>
+
+
+  <section style="box-shadow: none;">
+    <h2>Machine Learning Projects</h2>
+    <div class="ml-projects-grid">
+      <a href="projects/university-chatbot.html" class="ml-card">
+        <img src="images/project-university-chatbot.png" alt="University Chatbot">
+        <div class="text">
+          <h3>University Query Chatbot</h3>
+          <p>A machine learning chatbot that responds to university-related questions like admissions, eligibility, fees, and faculty. It uses intent detection and rule-based logic to deliver fast and accurate answers from a predefined set.</p>
+          <p><strong>Tech Stack:</strong> Python, scikit-learn, TF-IDF, Logistic Regression</p>
+        </div>
+      </a>
+
+      <a href="projects/spam-mail.html" class="ml-card">
+        <img src="images/project-spam-mail-detection.jpg" alt="Spam Mail Detection LSTM">
+        <div class="text">
+          <h3>Spam Mail Detection</h3>
+          <p>A deep learning model that classifies SMS messages as spam or not using LSTM networks. It learns from word patterns, making it useful for real-time spam detection and automatic inbox cleanup.</p>
+          <p><strong>Tech Stack:</strong> Python, TensorFlow, LSTM, NLP</p>
+        </div>
+      </a>
+
+      <a href="projects/speech-to-text.html" class="ml-card">
+        <img src="images/project-speech-to-text.jpg" alt="Speech to Text">
+        <div class="text">
+          <h3>Speech to Text Conversion</h3>
+          <p>Converts audio from microphone or files into text using Wav2Vec2 or Whisper — ideal for demos, quick prototypes, and voice-controlled systems.</p>
+          <p><strong>Tech Stack:</strong> Python, Hugging Face, Whisper, Wav2Vec2</p>
+        </div>
+      </a>
+
+      <a href="projects/movie-recommender.html" class="ml-card">
+        <img src="images/project-movie-recommendation.png" alt="Movie Recommendation System">
+        <div class="text">
+          <h3>Movie Recommendation System</h3>
+          <p>A collaborative filtering recommendation system that uses the MovieLens dataset to analyze user preferences. It predicts personalized movie suggestions by combining matrix factorization with content-based and behavior-driven insights.</p>
+          <p><strong>Tech Stack:</strong> R, recommenderlab, MovieLens</p>
+        </div>
+      </a>
+
+      <a href="projects/sentiment-rating.html" class="ml-card">
+        <img src="images/project-sentiment-product-rating.png" alt="Sentiment-Based Product Rating">
+        <div class="text">
+          <h3>Sentiment-Based Product Rating</h3>
+          <p>Analyzes customer reviews to detect sentiment and estimate product ratings using NLP and ML, turning feedback into valuable insights.</p>
+          <p><strong>Tech Stack:</strong> Python, NLTK, TextBlob, VADER</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Blockchain Projects -->
+  <!-- <section style="box-shadow: none;">
+    <h2>Blockchain Projects</h2>
+    <div class="project-block">
+      <h3>Dummy Project</h3>
+      <p>Section to write project details.</p>
+      <p><strong>Tech Stack:</strong> Add stacks here!</p>
+    </div>
+  </section> -->
+  <section style="box-shadow: none;">
+  <h2>Blockchain Projects</h2>
+  <div class="project-block" style="text-align: center; padding: 30px;">
+    <img src="images/under-construction-1.png" alt="Under Construction"
+         style="max-width: 300px; width: 100%; height: auto; margin: 0 auto; display: block; border-radius: 10px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);" />
+  </div>
+  </section>
+
+
+  <section style="box-shadow: none;">
+  <h2>API-Based Projects</h2>
+  <a href="projects/multilingual-hr-bot.html" style="text-decoration: none;">
+    <div class="project-block" style="display: flex; flex-wrap: wrap; gap: 0; cursor: pointer; padding: 0; overflow: hidden;">
+      
+
+      <div class="hrbot-image">
+  <img src="images/project-multilingual-hr-bot.jpg" alt="Multilingual HR Bot Preview"
+       style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+</div>
+
+
+
+      <div style="flex: 1; padding: 20px;">
+        <h3 style="margin-top: 0;">Multilingual HR Bot</h3>
+        <p>
+          A smart HR assistant that answers employee queries about payroll, leave, and updates using GPT-powered APIs. It supports multiple languages and is built for easy integration, making it ideal for global teams and internal support systems.
+        </p>
+        <p><strong>Tech Stack:</strong> Python, OpenAI API, Flask, REST, NLP</p>
+      </div>
+
+    </div>
+  </a>
+</section>
+
+
+  <!-- Android Development Projects -->
+  <!-- <section style="box-shadow: none;">
+    <h2>Android Development</h2>
+    <div class="project-block">
+      <h3>Dummy Project</h3>
+      <p>Section to write project details.</p>
+      <p><strong>Tech Stack:</strong> Add stacks here!</p>
+    </div>
+  </section> -->
+  <section style="box-shadow: none;">
+  <h2>Android Development</h2>
+  <div class="project-block" style="text-align: center; padding: 30px;">
+    <img src="images/under-construction-1.png" alt="Under Construction"
+         style="max-width: 300px; width: 100%; height: auto; margin: 0 auto; display: block; border-radius: 10px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);" />
+  </div>
+  </section>
+
+  <!-- Data Visualization Projects -->
+  <!-- <section style="box-shadow: none;">
+    <h2>Data Visualization</h2>
+    <div class="project-block">
+      <h3>Dummy Project</h3>
+      <p>Section to write project details.</p>
+      <p><strong>Tech Stack:</strong> Add stacks here!</p>
+    </div>
+  </section> -->
+  <section style="box-shadow: none;">
+  <h2>Data Visualization</h2>
+  <div class="project-block" style="text-align: center; padding: 30px;">
+    <img src="images/under-construction-1.png" alt="Under Construction"
+         style="max-width: 300px; width: 100%; height: auto; margin: 0 auto; display: block; border-radius: 10px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);" />
+  </div>
+  </section>
+
+  <!-- C++ / Other Languages -->
+  <!-- <section style="box-shadow: none;">
+    <h2>C++ / Other Languages</h2>
+    <div class="project-block">
+      <h3>Dummy Project</h3>
+      <p>Section to write project details.</p>
+      <p><strong>Tech Stack:</strong> Add stacks here!</p>
+    </div>
+  </section> -->
+  <section style="box-shadow: none;">
+  <h2>C++ / Other Languages</h2>
+  <div class="project-block" style="text-align: center; padding: 30px;">
+    <img src="images/under-construction-1.png" alt="Under Construction"
+         style="max-width: 300px; width: 100%; height: auto; margin: 0 auto; display: block; border-radius: 10px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);" />
+  </div>
+  </section>
+
+
+
+  <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+  <script>
+    window.onload = function () {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('.theme-toggle').textContent = '🌙';
+      }
+    };
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      document.querySelector('.theme-toggle').textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+  </script>
+  <script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const toggleBtn = document.getElementById('menuToggleBtn');
+  const isMenuOpen = menu.classList.toggle('show');
+
+  toggleBtn.classList.toggle('active');
+
+  if (window.innerWidth <= 768) {
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.onclick = () => {
+        menu.classList.remove('show');
+        toggleBtn.classList.remove('active');
+      };
+    });
+
+    document.addEventListener('click', function outsideClick(e) {
+      if (!menu.contains(e.target) && !e.target.closest('.menu-toggle')) {
+        menu.classList.remove('show');
+        toggleBtn.classList.remove('active');
+        document.removeEventListener('click', outsideClick);
+      }
+    });
+  }
+}
+</script>
+
+
+</body>
+</html>
