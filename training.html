@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Summer Training – Naman Dhanopiya</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .training-container {
+      position: relative;
+      display: inline-flex;
+      align-items: flex-start;
+      margin: 60px 0;
+      padding-left: 0px;
+      justify-content: flex-start;
+    }
+
+    .view-certificate-btn {
+  display: inline-block;
+  background-color: #43a047;
+  color: #000;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+  margin-left: 0;
+  box-shadow: none;
+}
+
+.view-certificate-btn:hover {
+  background-color: #66bb6a;
+  transform: none;
+  transition: background 0.3s;
+}
+
+.view-certificate-btn {
+  background-color: #43a047 !important;  
+  color: #000 !important;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s;
+  margin-top: 20px;
+  margin-left: 0;
+  box-shadow: none;
+  transform: none !important;
+}
+
+.view-certificate-btn:hover {
+  background-color: #66bb6a !important;  
+  transform: none !important;
+  transition: background 0.3s;
+}
+
+
+    section.no-glow {
+      box-shadow: none !important;
+      background: transparent !important;
+      border: none !important;
+      backdrop-filter: none !important;
+    }
+
+    .training-info {
+      height: 80vh;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 0 16px 16px 0;
+      padding: 40px;
+      width: fit-content;
+      max-width: 80ch;
+      overflow-wrap: break-word;
+      position: relative;
+      z-index: 1;
+    }
+
+   
+    body.light-mode .training-info h2,
+    body.light-mode .training-info h3,
+    body.light-mode .training-info p,
+    body.light-mode .training-info strong {
+      color: #000;
+    }
+
+    body.light-mode .training-info {
+  border: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+    /* Dark Mode Text Colors */
+    body:not(.light-mode) .training-info h2,
+    body:not(.light-mode) .training-info h3 {
+      color: var(--accent);
+    }
+
+    body:not(.light-mode) .training-info p,
+    body:not(.light-mode) .training-info strong {
+      color: var(--text-light);
+    }
+
+    .view-certificate-btn {
+  display: inline-block;
+  background-color: #43a047;
+  color: #000;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.view-certificate-btn:hover {
+  background-color: #66bb6a;
+}
+
+body.light-mode .view-certificate-btn {
+  background-color: #a5d6a7;
+  color: #000;
+}
+
+
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 36px;
+  height: 32px;
+  display: none;
+}
+.menu-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s ease;
+  border-radius: 3px;
+}
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+body.light-mode .menu-toggle .bar {
+  background-color: black;
+}
+
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .topbar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+  }
+  .topbar.show {
+    display: flex;
+  }
+  body.light-mode .topbar {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .topbar a {
+    margin: 8px 0;
+    font-size: 1rem;
+  }
+
+  .training-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .training-info {
+    flex: 0 0 90%;
+    max-width: 90vw;
+    scroll-snap-align: center;
+    padding: 20px;
+    margin: auto;
+    border-radius: 16px;
+    height: auto;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  body:not(.light-mode) .training-info {
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  .training-info h2 {
+    font-size: 1.3rem;
+  }
+  .training-info h3 {
+    font-size: 1.1rem;
+  }
+  .training-info p {
+    font-size: 0.9rem;
+  }
+
+  .view-certificate-btn {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+}
+
+.menu-toggle,
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+  </style>
+</head>
+<body class="training-bg">
+
+  <button class="menu-toggle" id="menuToggleBtn" onclick="toggleMenu()">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+  </button>
+
+
+  <div class="topbar">
+    <a href="index.html#about">About Me</a>
+    <a href="skills.html">Skills & Technologies</a>
+    <a href="projects.html">Projects</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="resume/resume.pdf" target="_blank">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+
+  <header>
+    <h1>Summer Training</h1>
+  </header>
+
+
+  <section class="training-container no-glow">
+
+    
+
+
+    <div class="training-info">
+      <h2>GeekForGeeks Training Program</h2>
+      <h3>May 2024 – July 2024</h3>
+
+      <p><strong>• About:</strong>Completed structured DSA 230-hour course from GeeksforGeeks using C++ and java, solving 150+ problems across arrays, linked lists, and trees. Focused on company-wise patterns to build core logic, consistency, and strong problem-solving discipline for real-world and interview scenarios.</p>
+
+      <p><strong>• Projects:</strong>Built projects to apply DSA concepts like recursion, backtracking, and minimax. These helped sharpen my logic-building skills and showed how core algorithms power intelligent decision-making.</p>
+
+      <p><strong>• Tech Stack:</strong> DSA, C++, Python, Java</p>
+
+      <p><strong>• Skills Enhanced:</strong> Problem-solving, algorithmic thinking, time-space optimization, competitive programming.</p>
+      <a class="view-certificate-btn" href="certificates/summer_training_certificate.pdf" target="_blank">
+  View Certificate
+</a>
+    </div>
+
+  </section>
+
+
+  <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+
+
+  <script>
+    const themeToggleBtn = document.querySelector('.theme-toggle');
+    const certificateImg = document.getElementById('certificate-img');
+
+    function setTheme(isLight) {
+      document.body.classList.toggle('light-mode', isLight);
+      themeToggleBtn.textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+
+      certificateImg.src = isLight
+        ? 'images/summer-training-light.png'
+        : 'images/summer-training-dark.png';
+    }
+
+    window.onload = function () {
+      const savedTheme = localStorage.getItem('theme');
+      const isLight = savedTheme === 'light';
+      setTheme(isLight);
+    };
+
+    function toggleTheme() {
+      const isCurrentlyLight = document.body.classList.contains('light-mode');
+      setTheme(!isCurrentlyLight);
+    }
+  </script>
+  <script>
+  function toggleMenu() {
+    const menu = document.querySelector('.topbar');
+    const toggleBtn = document.getElementById('menuToggleBtn');
+    const isMenuOpen = menu.classList.toggle('show');
+    toggleBtn.classList.toggle('active');
+
+    if (window.innerWidth <= 768) {
+      const links = menu.querySelectorAll('a');
+      links.forEach(link => {
+        link.onclick = () => {
+          menu.classList.remove('show');
+          toggleBtn.classList.remove('active');
+        };
+      });
+
+      document.addEventListener('click', function outsideClick(e) {
+        if (!menu.contains(e.target) && !e.target.closest('.menu-toggle')) {
+          menu.classList.remove('show');
+          toggleBtn.classList.remove('active');
+          document.removeEventListener('click', outsideClick);
+        }
+      });
+    }
+  }
+</script>
+
+
+</body>
+</html>
