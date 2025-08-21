@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Naman Dhanopiya</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root {
+      --accent: #00f7ff;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      color: var(--text-light);
+      background: linear-gradient(135deg, #0a0a0a, #141414);
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.light-mode {
+      background: linear-gradient(135deg, #f9f9f9, #e2e2e2);
+      color: #111;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 40px 0 40px;
+      gap: 20px;
+    }
+
+    .topbar a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .topbar a:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+    }
+
+    body.light-mode header h1 {
+      color: #000;
+    }
+
+    .contact {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .contact-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    body.light-mode .contact-title {
+      color: #000;
+    }
+
+    .contact-line {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      font-size: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      text-align: center;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item .emoji {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item.email:hover {
+      color: #ff5e9c;
+    }
+
+    .contact-item.phone:hover {
+      color: #daa520;
+    }
+
+    .contact-item.github:hover {
+      color: #43a047;
+    }
+
+    .contact-item.linkedin:hover {
+      color: #0077b5;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+  .contact-line {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 10px 0;
+    justify-content: flex-start;
+  }
+
+  .contact-item {
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.1);
+  }
+
+  body.light-mode .contact-item {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-line::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .contact-line::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 247, 255, 0.4);
+    border-radius: 4px;
+  }
+
+  .contact-line::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+.contact-item a {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  text-align: center;
+  display: block;
+}
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #66d9ff;
+      color: black;
+      padding: 12px 14px;
+      font-size: 18px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 100;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: #99e6ff;
+      transform: scale(1.1);
+    }
+
+    body.light-mode .topbar a {
+      color: #000;
+    }
+
+    body.light-mode .topbar a:hover {
+      color: #444;
+    }
+
+    body.light-mode .contact-item {
+      color: #000;
+    }
+
+    body.light-mode .theme-toggle {
+      background: #0033cc;
+      color: white;
+    }
+
+    body.light-mode .theme-toggle:hover {
+      background: #0052e0;
+    }
+
+    .menu-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 36px;
+  height: 32px;
+  display: none;
+}
+.menu-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s ease;
+  border-radius: 3px;
+}
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+body.light-mode .menu-toggle .bar {
+  background-color: black;
+}
+
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .topbar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+  }
+  .topbar.show {
+    display: flex;
+  }
+  body.light-mode .topbar {
+    background: rgba(255, 255, 255, 0.95);
+  }
+  .topbar a {
+    margin: 8px 0;
+    font-size: 1rem;
+  }
+}
+
+.menu-toggle,
+.menu-toggle:hover,
+.menu-toggle:focus,
+.menu-toggle:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+@media (max-width: 768px) {
+  .contact-item {
+    box-shadow: none !important;
+  }
+}
+
+  </style>
+</head>
+<body class="contact-bg">
+
+
+<button class="menu-toggle" id="menuToggleBtn" onclick="toggleMenu()">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+
+
+  <div class="topbar" id="mobileMenu">
+    <a href="index.html#about">About Me</a>
+    <a href="skills.html">Skills & Technologies</a>
+    <a href="projects.html">Projects</a>
+    <a href="training.html">Training</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="resume/resume.pdf" target="_blank">Resume</a>
+  </div>
+
+
+  <header>
+    <h1>CONTACT DETAILS</h1>
+  </header>
+
+
+  <section id="contact" class="contact dark-neutral">
+    <h2 class="contact-title" id="contact-heading"></h2>
+    <p id="contact-subheading" style="font-size: 1.1rem; margin-top: -45px; margin-bottom: 50px; color: inherit;"></p>
+
+    <div class="contact-line">
+      <div class="contact-item email">
+        <div class="emoji">📫</div>
+        <a href="mailto:iamnamandhanopiya@gmail.com">iamnamandhanopiya@gmail.com</a>
+      </div>
+      <div class="contact-item phone">
+        <div class="emoji">📞</div>
+        <a href="tel:+919166234675 ">(+91) 91662 34675 </a>
+      </div>
+      <div class="contact-item github">
+        <div class="emoji">🚀</div>
+        <a href="https://github.com/namandhanopiya2003" target="_blank">github.com/namandhanopiya2003</a>
+      </div>
+      <div class="contact-item linkedin">
+        <div class="emoji">🌐</div>
+        <a href="https://www.linkedin.com/in/naman-dhanopiya" target="_blank">linkedin.com/in/naman-dhanopiya</a>
+      </div>
+    </div>
+  </section>
+
+
+  <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+
+
+  <script>
+    const headingText = "Let’s work together";
+    const subheadingText = "Good code, great conversations, and meaningful impact — that’s what I’m here for.";
+
+    const headingElem = document.getElementById("contact-heading");
+    const subheadingElem = document.getElementById("contact-subheading");
+
+    let headingIndex = 0;
+    let subheadingIndex = 0;
+
+    function typeHeading() {
+      if (headingIndex < headingText.length) {
+        headingElem.textContent += headingText.charAt(headingIndex);
+        headingIndex++;
+        setTimeout(typeHeading, 50);
+      } else {
+        setTimeout(typeSubheading, 300);
+      }
+    }
+
+    function typeSubheading() {
+      if (subheadingIndex < subheadingText.length) {
+        subheadingElem.textContent += subheadingText.charAt(subheadingIndex);
+        subheadingIndex++;
+        setTimeout(typeSubheading, 30);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", typeHeading);
+  </script>
+
+
+  <script>
+    window.onload = function () {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('.theme-toggle').textContent = '🌙';
+      }
+    };
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      document.querySelector('.theme-toggle').textContent = isLight ? '🌙' : '☀️';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+  </script>
+  <script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const toggleBtn = document.getElementById('menuToggleBtn');
+  const isMenuOpen = menu.classList.toggle('show');
+
+  toggleBtn.classList.toggle('active');
+
+  if (window.innerWidth <= 768) {
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.onclick = () => {
+        menu.classList.remove('show');
+        toggleBtn.classList.remove('active');
+      };
+    });
+
+    document.addEventListener('click', function outsideClick(e) {
+      if (!menu.contains(e.target) && !e.target.closest('.menu-toggle')) {
+        menu.classList.remove('show');
+        toggleBtn.classList.remove('active');
+        document.removeEventListener('click', outsideClick);
+      }
+    });
+  }
+}
+</script>
+
+
+</body>
+</html>
