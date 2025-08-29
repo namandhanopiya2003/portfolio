@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Recommendation – Naman Dhanopiya</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-text {
+  text-align: left;
+  max-width: 1000px;
+  margin: 40px auto 20px 60px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.intro-text p {
+  text-align: left;
+}
+
+
+    .intro-text h1 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      margin-bottom: 10px;
+    }
+
+    .intro-text p {
+      color: #ccc;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .github-btn {
+      display: inline-block;
+      background-color: #43a047;
+      color: #000;
+      font-weight: 600;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .github-btn:hover {
+      background-color: #66bb6a;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 40px 60px;
+      margin-top: 20px;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-card h2 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .info-card p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .tech-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #00ffff;
+      font-weight: 500;
+    }
+
+    .output-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 0 60px 60px;
+      margin-top: 40px;
+    }
+
+    .output-gallery img {
+  width: 100%;
+  height: 250px; 
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  object-fit: cover;
+}
+
+
+    .project-heading {
+      text-align: center;
+      color: #00ffff;
+    }
+
+    body.light-mode .intro-text h1,
+    body.light-mode .info-card h2 {
+      color: #000 !important;
+    }
+
+    body.light-mode .intro-text p,
+    body.light-mode .info-card p {
+      color: #000 !important;
+    }
+
+    body.light-mode .tech-item {
+      background: #e0e0e0;
+      border-color: #ccc;
+      color: #003366;
+    }
+
+    body.light-mode .project-heading {
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+  .info-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .info-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .output-gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .output-gallery a {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+
+  .output-gallery img,
+  .output-gallery video {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-text {
+    margin: 30px 16px 10px 16px;
+    padding: 0;
+  }
+
+  .info-grid {
+    padding: 10px 16px;
+  }
+
+  .output-gallery {
+    padding: 10px 16px 40px;
+  }
+}
+
+  </style>
+</head>
+<body class="projects-bg">
+
+
+  <img class="hero-img" src="../images/project-movie-recommendation.png" alt="Movie Recommendation Preview">
+
+  
+  <div class="intro-text">
+    <h1>Movie Recom&shy;mendation System</h1>
+    <p>
+      A collaborative filtering recommendation system that uses the MovieLens dataset to analyze user preferences. It predicts personalized movie suggestions by combining matrix factorization with content-based and behavior-driven insights.
+    </p>
+    <a class="github-btn" href="https://github.com/namandhanopiya2003/Movie-Recommendation-System" target="_blank">View on GitHub</a>
+  </div>
+
+  
+  <div class="info-grid">
+
+   
+    <div class="info-card">
+      <h2>Technologies Used</h2>
+      <div class="tech-list">
+        <div class="tech-item">R</div>
+        <div class="tech-item">recommenderlab</div>
+        <div class="tech-item">Data Normalization</div>
+        <div class="tech-item">Evaluation Metrics</div>
+      </div>
+    </div>
+
+  
+    <div class="info-card">
+      <h2>Challenges Faced</h2>
+      <p>
+        Managing sparse rating data and tuning parameters like similarity scores and normalization was challenging. I also had to ensure the system remained scalable and personalized, even for users with limited past activity, which required thoughtful design choices.
+      </p>
+    </div>
+
+ 
+    <div class="info-card">
+      <h2>What I Learned</h2>
+      <p>
+        I gained practical experience with collaborative filtering, transforming user-item matrices, and evaluating models using precision, recall. Also learned to build complete recommendation systems using R and the recommenderlab package.
+      </p>
+    </div>
+
+  </div>
+
+ 
+<section style="box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
+  <h2 class="project-heading">Project Outputs</h2>
+  <div class="output-gallery">
+
+  
+    <a href="../images/output-movie-recommender.gif" target="_blank">
+      <img src="../images/output-movie-recommender.gif" alt="Output-GIF"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+  
+    <a href="../images/output-movie-recommender-1.png" target="_blank">
+      <img src="../images/output-movie-recommender-1.png" alt="Output-1"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+   
+    <a href="../images/output-movie-recommender-2.png" target="_blank">
+      <img src="../images/output-movie-recommender-2.png" alt="Output-2"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+
+    <a href="../images/output-movie-recommender-3.png" target="_blank">
+      <img src="../images/output-movie-recommender-3.png" alt="Output-3"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+  </div>
+</section>
+
+
+
+
+  <script>
+    window.onload = function () {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    };
+  </script>
+
+</body>
+</html>
