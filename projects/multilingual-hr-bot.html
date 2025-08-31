@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multilingual HR Bot – Naman Dhanopiya</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro-text {
+  text-align: left;
+  max-width: 1000px;
+  margin: 40px auto 20px 60px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+    .intro-text h1 {
+      font-size: 2.5rem;
+      color: #00ffff;
+      margin-bottom: 10px;
+    }
+
+    .intro-text p {
+      color: #ccc;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .github-btn {
+      display: inline-block;
+      background-color: #43a047;
+      color: #000;
+      font-weight: 600;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .github-btn:hover {
+      background-color: #66bb6a;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 40px 60px;
+      margin-top: 20px;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-card h2 {
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .info-card p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .tech-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #00ffff;
+      font-weight: 500;
+    }
+
+    .output-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 0 60px 60px;
+      margin-top: 40px;
+    }
+
+    .output-gallery img {
+  width: 100%;
+  height: 250px; 
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  object-fit: cover;
+}
+
+
+    .project-heading {
+      text-align: center;
+      color: #00ffff;
+    }
+
+    body.light-mode .intro-text h1,
+    body.light-mode .info-card h2 {
+      color: #000 !important;
+    }
+
+    body.light-mode .intro-text p,
+    body.light-mode .info-card p {
+      color: #000 !important;
+    }
+
+    body.light-mode .tech-item {
+      background: #e0e0e0;
+      border-color: #ccc;
+      color: #003366;
+    }
+
+    body.light-mode .project-heading {
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+  .intro-text {
+    margin: 20px auto;
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .info-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 20px 16px;
+  }
+
+  .info-card {
+    flex: 0 0 90%;
+    scroll-snap-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  }
+
+  .output-gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 0 16px 40px;
+  }
+
+  .output-gallery a {
+    flex: 0 0 90%;
+    scroll-snap-align: center;
+    display: block;
+  }
+
+  .output-gallery img,
+.output-gallery video {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+
+  .output-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.intro-text h1,
+.intro-text p {
+  text-align: left;
+  align-self: flex-start;
+}
+
+  </style>
+</head>
+<body class="projects-bg">
+
+ 
+  <img class="hero-img" src="../images/project-multilingual-hr-bot.jpg" alt="Multilingual HR Bot Preview">
+
+  
+  <div class="intro-text">
+    <h1>Multilingual HR Bot</h1>
+    <p>
+      A smart HR assistant that answers employee queries about payroll, leave, and updates using GPT-powered APIs. It supports multiple languages and is built for easy integration, making it ideal for global teams and internal support systems.
+    </p>
+    <a class="github-btn" href="https://github.com/namandhanopiya2003/Multilingual-HR-Bot" target="_blank">View on GitHub</a>
+  </div>
+
+  
+  <div class="info-grid">
+
+    
+    <div class="info-card">
+      <h2>Technologies Used</h2>
+      <div class="tech-list">
+        <div class="tech-item">Python</div>
+        <div class="tech-item">OpenAI API</div>
+        <div class="tech-item">Flask</div>
+        <div class="tech-item">REST API</div>
+        <div class="tech-item">NLP</div>
+      </div>
+    </div>
+
+    
+    <div class="info-card">
+      <h2>Challenges Faced</h2>
+      <p>
+        Making the chatbot work in different languages was tricky because each language has its own quirks. I also had to make sure it could handle user's requests and respond properly if any failure happens.
+      </p>
+    </div>
+
+   
+    <div class="info-card">
+      <h2>What I Learned</h2>
+      <p>
+        Learned how to connect OpenAI APIs with Flask, handle multilingual inputs, build fallback systems, and design scalable, secure chat interfaces that perform well under real-world usage.
+      </p>
+    </div>
+
+  </div>
+
+
+<section style="box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
+  <h2 class="project-heading">Project Outputs</h2>
+  <div class="output-gallery">
+
+ 
+    <a href="../images/output-hr-bot.gif" target="_blank">
+      <img src="../images/output-hr-bot.gif" alt="Output-GIF"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+ 
+    <a href="../images/output-hr-bot-1.png" target="_blank">
+      <img src="../images/output-hr-bot-1.png" alt="Output-1"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+
+    <a href="../images/output-hr-bot-2.png" target="_blank">
+      <img src="../images/output-hr-bot-2.png" alt="Output-2"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+   
+    <a href="../images/output-hr-bot-3.png" target="_blank">
+      <img src="../images/output-hr-bot-3.png" alt="Output-3"
+        style="width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.3); object-fit: cover;">
+    </a>
+
+  </div>
+</section>
+
+
+
+
+ 
+  <script>
+    window.onload = function () {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+      }
+    };
+  </script>
+
+</body>
+</html>
